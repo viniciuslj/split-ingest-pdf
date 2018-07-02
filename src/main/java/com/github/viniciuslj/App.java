@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.logging.Level;
 
 public class App
 {
@@ -26,9 +25,7 @@ public class App
     public static void main(String[] args) {
         // https://pdfbox.apache.org/2.0/getting-started.html
         System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
-        // https://stackoverflow.com/questions/11466610/disabling-logging-on-pdfbox
-        java.util.logging.Logger
-                .getLogger("org.apache.pdfbox").setLevel(Level.SEVERE);
+        disableLogPDFBox();
 
         options = processArgs(args);
         if(options == null) {
@@ -111,9 +108,16 @@ public class App
 
         if(options.isSplitMode()) {
             processSplit(path);
-            return;
+        } else {
+            processFull(path);
         }
 
-        processFull(path);
+        System.gc();
+    }
+
+    private static void disableLogPDFBox() {
+        // https://stackoverflow.com/questions/47554201/how-to-disable-pdfbox-warn-logging
+        System.setProperty("org.apache.commons.logging.Log",
+                "org.apache.commons.logging.impl.NoOpLog");
     }
 }
