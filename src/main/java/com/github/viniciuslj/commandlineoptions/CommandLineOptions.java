@@ -1,13 +1,13 @@
 package com.github.viniciuslj.commandlineoptions;
 
 import com.github.viniciuslj.elasticsearch.ParametersElasticsearch;
-import com.github.viniciuslj.ParametersFileSystem;
+import com.github.viniciuslj.inputfiles.ParametersInputFiles;
 import org.apache.commons.cli.*;
 
 
 public class CommandLineOptions implements
         ParametersElasticsearch,
-        ParametersFileSystem {
+        ParametersInputFiles {
 
     private static final String APP_NAME = "split-ingest-pdf";
     private Options options;
@@ -155,6 +155,6 @@ public class CommandLineOptions implements
 
     @Override
     public String getRecursivePath() {
-        return commandLine.getOptionValue("f");
+        return commandLine.getOptionValue("r");
     }
 }

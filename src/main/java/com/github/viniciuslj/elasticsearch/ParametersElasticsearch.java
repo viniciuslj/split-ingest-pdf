@@ -2,7 +2,7 @@ package com.github.viniciuslj.elasticsearch;
 
 public interface ParametersElasticsearch {
     String getHost();
-    String getPort();
+    int getPort();
     String getClusterName();
     String getIndexName();
 }

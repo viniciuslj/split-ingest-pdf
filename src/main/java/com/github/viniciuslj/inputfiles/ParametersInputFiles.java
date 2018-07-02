@@ -1,6 +1,6 @@
-package com.github.viniciuslj;
+package com.github.viniciuslj.inputfiles;
 
-public interface ParametersFileSystem {
+public interface ParametersInputFiles {
     boolean isSplitMode();
     boolean isRecursiveMode();
     boolean isSingleMode();
