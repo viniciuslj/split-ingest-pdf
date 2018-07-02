@@ -134,11 +134,6 @@ public class CommandLineOptions implements
     }
 
     @Override
-    public boolean isSplitMode() {
-        return commandLine.hasOption("s");
-    }
-
-    @Override
     public boolean isRecursiveMode() {
         return commandLine.hasOption("r");
     }
@@ -156,5 +151,9 @@ public class CommandLineOptions implements
     @Override
     public String getRecursivePath() {
         return commandLine.getOptionValue("r");
+    }
+
+    public boolean isSplitMode() {
+        return commandLine.hasOption("s");
     }
 }

@@ -37,7 +37,8 @@ public class ElasticsearchClient {
         return transportClient.prepareIndex(parameters.getIndexName(), "_doc");
     }
 
-    public IndexResponse addDocumnet(Map<String, Object> json) {
+    public IndexResponse addDocumnet(Map<String, Object> json, String id) {
+        index.setId(id);
         IndexResponse response = index.setSource(json).get();
         if(response.getShardInfo().getSuccessful() == 0) {
             throw new IndexDocumentException();
