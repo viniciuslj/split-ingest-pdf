@@ -81,10 +81,13 @@ public class App
 
         try {
             List<Map<String, Object>> pagesMap = pdfManipulator.getPagesMap(path);
+            client.prepareBulk();
             for (Map<String, Object> pageMap: pagesMap) {
                 pageNumber++;
-                client.addDocumnet(pageMap, path.toAbsolutePath().toString() + "." + pageNumber);
+                client.addDocumentInBulk(pageMap, path.toAbsolutePath().toString() + "." + pageNumber);
             }
+
+            client.sendBulk();
 
             processedFileCounter++;
         } catch (Exception e) {
