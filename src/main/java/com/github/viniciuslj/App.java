@@ -19,6 +19,7 @@ public class App
     private static CommandLineOptions options;
     private static ElasticsearchClient client;
     private static PDFManipulator pdfManipulator;
+    private static InputFiles inputFiles;
     private static long processedFileCounter = 0;
     private static List<String> unprocessedFileList;
 
@@ -39,7 +40,8 @@ public class App
 
             pdfManipulator = new PDFManipulator();
             Consumer<Path> consumer = (path) -> processSingleFile(path);
-            InputFiles.createFromParameters(options).forEach(consumer);
+            inputFiles = InputFiles.createFromParameters(options);
+            inputFiles.forEach(consumer);
 
             client.close();
         } catch (UnknownHostException e) {

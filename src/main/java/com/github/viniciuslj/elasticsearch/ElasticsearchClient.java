@@ -24,8 +24,8 @@ public class ElasticsearchClient {
                 .put("cluster.name", parameters.getClusterName()).build();
 
         transportClient = new PreBuiltTransportClient(settings)
-                .addTransportAddress(new TransportAddress(InetAddress.
-                        getByName(parameters.getHost()), parameters.getPort()));
+                .addTransportAddress(new TransportAddress(InetAddress
+                		.getByName(parameters.getHost()), parameters.getPort()));
     }
 
     public static ElasticsearchClient createFromParameters(ParametersElasticsearch parameters) throws UnknownHostException {
