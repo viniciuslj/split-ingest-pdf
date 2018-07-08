@@ -19,7 +19,7 @@ Realiza importação de arquivos PDF para o Elasticsearch. Os arquivos são carr
 ## Como usar
 
 ```bash
-java -jar split-ingest-pdf [-s] [-c <cluster name>] [-f <pdf file>] [-h <elasticsearch host>] [-H] -i <index name> [-p <elasticsearch port>] [-r <recursive path>]
+java -jar split-ingest-pdf.jar [-s] [-c <cluster name>] [-f <pdf file>] [-h <elasticsearch host>] [-H] -i <index name> [-p <elasticsearch port>] [-r <recursive path>]
 ```
 
 Comando                               | Descrição
@@ -71,26 +71,26 @@ no Elasticsearch para cada página, entretanto esses documnetos podem ser relaci
 ```bash
 # Dividir o PDF manual-linux.pdf em páginas, extrair o texto, utilizar o índice "livros",
 # enviar para o ES em localhost (127.0.0.1), porta 9300 e cluster "docker-cluster"
-java -jar split-ingest-pdf -s -i livros -f livros/linux/manual-linux.pdf
+java -jar split-ingest-pdf.jar -s -i livros -f livros/linux/manual-linux.pdf
 ```
 ```bash
 # Extrair o texto do arquivo reference.pdf (sem divisão de páginas), utilizar o índice "livros",
 # enviar para o ES em localhost (127.0.0.1), porta 9300 e cluster "docker-cluster"
-java -jar split-ingest-pdf -i livros -f livros/java/reference.pdf
+java -jar split-ingest-pdf.jar -i livros -f livros/java/reference.pdf
 ```
 ```bash
 # Dividir em páginas todos os PDF's do diretório "livros" e seus subdiretórios, 
 # extrair o texto, utilizar o índice "livros", enviar para o ES em 
 # localhost (127.0.0.1), porta 9300 e cluster "docker-cluster"
-java -jar split-ingest-pdf -s -i livros -r livros
+java -jar split-ingest-pdf.jar -s -i livros -r livros
 ```
 ```bash
 # Elasticsearch em 170.26.2.89
-java -jar split-ingest-pdf -s -i livros -r livros -h 170.26.2.89
+java -jar split-ingest-pdf.jar -s -i livros -r livros -h 170.26.2.89
 ```
 ```bash
 # Elasticsearch em banco-elastic.meusite.com.br
-java -jar split-ingest-pdf -s -i livros -r /home/usuario/livros -h banco-elastic.meusite.com.br
+java -jar split-ingest-pdf.jar -s -i livros -r /home/usuario/livros -h banco-elastic.meusite.com.br
 ```
 
 ## Estrutura do [documento](https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_document) no Elasticsearch
